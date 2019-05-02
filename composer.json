@@ -1,0 +1,24 @@
+{
+  "name": "superrb/memcached-handler",
+  "description": "A handler for Memcached to use for Session handling and caching in Symfony",
+  "keywords": [
+    "cms"
+  ],
+  "homepage": "https://github.com/superrbstudio/memcached-handler",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Superrb Team",
+      "email": "tech@superrb.com"
+    }
+  ],
+  "require": {
+    "ext-memcached": "*",
+    "symfony/symfony": "3.4.*"
+  },
+  "autoload": {
+    "psr-4": {"Superrb\\": "src/Superrb/"}
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
