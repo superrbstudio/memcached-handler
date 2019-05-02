@@ -17,7 +17,9 @@
     "symfony/symfony": "3.4.*"
   },
   "autoload": {
-    "psr-4": {"Superrb\\": "src/Superrb/"}
+    "psr-4" : {
+      "Superrb\\MemcachedHandlerBundle\\": "src/"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
