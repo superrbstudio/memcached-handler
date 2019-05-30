@@ -14,7 +14,7 @@
   ],
   "require": {
     "ext-memcached": "*",
-    "symfony/symfony": "3.4.* || 4.2.*"
+    "symfony/symfony": "4.*"
   },
   "autoload": {
     "psr-4" : {
