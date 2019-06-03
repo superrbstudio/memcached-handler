@@ -1,0 +1,22 @@
+parameters:
+  superrb_memcached_handler.memcached_host: "%env(resolve:MEMCACHED_HOST)%"
+  superrb_memcached_handler.memcached_port: "%env(float:MEMCACHED_PORT)%"
+  superrb_memcached_handler.memcached_expire: "%env(float:MEMCACHED_EXPIRE)%"
+  superrb_memcached_handler.memcached_prefix: "%env(string:MEMCACHED_PREFIX)%"
+
+services:
+  superrb_memcached_handler.memcached:
+    class: Superrb\MemcachedHandlerBundle\Utilities\MemcachedWrapper
+    arguments:
+      - "%superrb_memcached_handler.memcached_prefix%"
+    calls:
+      - [ addServer, [ "%superrb_memcached_handler.memcached_host%", "%superrb_memcached_handler.memcached_port%" ]]
+
+  superrb_memcached_handler.session.handler.memcached:
+    class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+    arguments: [ "@superrb_memcached_handler.memcached", { prefix: "%superrb_memcached_handler.memcached_prefix%", expiretime: "%superrb_memcached_handler.memcached_expire%" } ]
+
+  superrb_memcached_handler.doctrine.cache.memcached:
+    class: Doctrine\Common\Cache\MemcachedCache
+    calls:
+      - [ setMemcached, [ "@superrb_memcached_handler.memcached" ] ]
